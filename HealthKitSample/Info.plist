@@ -49,6 +49,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Using this for my GT App!</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Only shared with no one</string>
+	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
+	<string>Grad School GT</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

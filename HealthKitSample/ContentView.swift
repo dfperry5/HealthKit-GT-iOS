@@ -9,8 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
+        
+    @State var retrievedFhirData = false
+    @State var allergy = ""
+    @State var patientName = ""
     
-    var fhirSampleURL = "https://www.hl7.org/fhir/patient-example.json";
     
     func authorizeHealthKit() {
         HealthKitUtil.authorizeHealthKit { (authorized, error) in
@@ -32,18 +35,35 @@ struct ContentView: View {
            }
     }
     
-   
-    
-    
-    
+    func getAllergyInformation() {
+        HealthKitUtil.getAllergyInformation() { (jsonResponse) in
+            
+            self.allergy = jsonResponse.value(forKeyPath: "substance.text") as! String
+            self.patientName = jsonResponse.value(forKeyPath: "patient.display") as! String
+            self.retrievedFhirData = true
+            
+        }
+       }
     
     var body: some View {
+            
         VStack {
+            Text("CS6440 - Health Kit Sample")
+                .font(.title)
+                .fontWeight(.light)
+                .foregroundColor(Color.red)
+            Spacer().frame(height: 50)
             Button( action: { self.authorizeHealthKit()}) {
               Text("Authorize HealthKit")
             }
-            Button( action: { HealthKitUtil.getAllergyInformation()}) {
-              Text("Get Allergy Data")
+            Spacer().frame(height: 20)
+            Button( action: { self.getAllergyInformation()}) {
+              Text("Get Allergy Information")
+            }
+            Spacer().frame(height: 20)
+            if self.retrievedFhirData {
+                Text("\(patientName) is allergic to \(allergy)")
+                    .foregroundColor(Color.green)
             }
         }
     }

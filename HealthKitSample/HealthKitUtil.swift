@@ -59,7 +59,7 @@ class HealthKitUtil {
     }
   }
     
-    class func getAllergyInformation(){
+    class func getAllergyInformation(completion: @escaping(_ fhirResponse: NSDictionary) -> Void) {
         guard let allergyType = HKObjectType.clinicalType(forIdentifier: .allergyRecord) else {
             fatalError("*** Unable to create the allergy type ***")
         }
@@ -84,26 +84,7 @@ class HealthKitUtil {
             print("END HKRECORD")
             do {
                 let jsonDictionary = try JSONSerialization.jsonObject(with: allergyFHIRRecord.data, options: []) as! NSDictionary
-                
-                print("BEGIN JSON")
-                print(jsonDictionary["id"])
-                print(jsonDictionary.value(forKeyPath: "patient.display"))
-                print(jsonDictionary.value(forKeyPath: "substance.text"))
-                let patientDictionary = jsonDictionary["patient"] as! NSDictionary
-                let patientName = patientDictionary["display"] as! String
-                print(patientName)
-                
-                
-//                guard let jsonArray = jsonDictionary as? [String: Any] else {
-//                      return
-//                }
-//                print(jsonArray)
-//                print("END JSON")
-//                let decoder = JSONDecoder()
-//                let model = try decoder.decode(AllergyFHIRRecord.self, from:
-//                                allergyFHIRRecord.data) //Decode JSON Response Data
-//                   print(model)
-//
+                completion(jsonDictionary)
             }
             catch let error {
                 print("*** An error occurred while parsing the FHIR data: \(error.localizedDescription) ***")

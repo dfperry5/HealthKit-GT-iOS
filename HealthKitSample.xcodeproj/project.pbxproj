@@ -16,6 +16,8 @@
 		79392EBD237F622800CF5E39 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79392EBC237F622800CF5E39 /* HealthKit.framework */; };
 		79392EBF237F652C00CF5E39 /* HealthKitUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79392EBE237F652C00CF5E39 /* HealthKitUtil.swift */; };
 		79392EC1237F71AF00CF5E39 /* FHIRModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79392EC0237F71AF00CF5E39 /* FHIRModels.swift */; };
+		79EB8CD92380F91700657783 /* HealthInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EB8CD82380F91700657783 /* HealthInfoRow.swift */; };
+		79EB8CDD2380FF3300657783 /* HealthInfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EB8CDC2380FF3300657783 /* HealthInfoDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		79392EBC237F622800CF5E39 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		79392EBE237F652C00CF5E39 /* HealthKitUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitUtil.swift; sourceTree = "<group>"; };
 		79392EC0237F71AF00CF5E39 /* FHIRModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FHIRModels.swift; sourceTree = "<group>"; };
+		79EB8CD82380F91700657783 /* HealthInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInfoRow.swift; sourceTree = "<group>"; };
+		79EB8CDC2380FF3300657783 /* HealthInfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInfoDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				79392EAE237F61D700CF5E39 /* Preview Content */,
 				79392EBE237F652C00CF5E39 /* HealthKitUtil.swift */,
 				79392EC0237F71AF00CF5E39 /* FHIRModels.swift */,
+				79EB8CD82380F91700657783 /* HealthInfoRow.swift */,
+				79EB8CDC2380FF3300657783 /* HealthInfoDetailView.swift */,
 			);
 			path = HealthKitSample;
 			sourceTree = "<group>";
@@ -170,7 +176,9 @@
 				79392EA9237F61D600CF5E39 /* SceneDelegate.swift in Sources */,
 				79392EBF237F652C00CF5E39 /* HealthKitUtil.swift in Sources */,
 				79392EC1237F71AF00CF5E39 /* FHIRModels.swift in Sources */,
+				79EB8CD92380F91700657783 /* HealthInfoRow.swift in Sources */,
 				79392EAB237F61D600CF5E39 /* ContentView.swift in Sources */,
+				79EB8CDD2380FF3300657783 /* HealthInfoDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

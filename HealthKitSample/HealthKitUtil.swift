@@ -96,4 +96,39 @@ class HealthKitUtil {
 
         HKHealthStore().execute(allergyQuery)
     }
+    
+    class func getInformation(sampleType: HKSampleType, completion: @escaping(_ fhirResponse: NSDictionary) -> Void) {
+
+        let allergyQuery = HKSampleQuery(sampleType: sampleType, predicate: nil, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, samples, error) in
+            
+            guard let actualSamples = samples else {
+                // Handle the error here.
+                print("*** An error occurred: \(error?.localizedDescription ?? "nil") ***")
+                return
+            }
+            
+            let allergySamples = actualSamples as? [HKClinicalRecord]
+           
+            guard let allergyFHIRRecord = allergySamples?[0].fhirResource else {
+                print("No FHIR record found!")
+                return
+            }
+            
+            print("HKRecord")
+            print(allergyFHIRRecord.data)
+            print("END HKRECORD")
+            do {
+                let jsonDictionary = try JSONSerialization.jsonObject(with: allergyFHIRRecord.data, options: []) as! NSDictionary
+                completion(jsonDictionary)
+            }
+            catch let error {
+                print("*** An error occurred while parsing the FHIR data: \(error.localizedDescription) ***")
+                // Handle JSON parse errors here.
+            }
+
+            
+        }
+
+        HKHealthStore().execute(allergyQuery)
+    }
 }

@@ -40,5 +40,4 @@ struct AllergyFHIRRecord: Codable {
     var resourceType: String
     var status: String
     var substance: AllergySubstance
-    
 }

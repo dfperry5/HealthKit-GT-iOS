@@ -14,6 +14,8 @@ struct ContentView: View {
     @State var allergy = ""
     @State var patientName = ""
     
+    var medicalTypes = ["BMI", "Allergies"]
+    
     
     func authorizeHealthKit() {
         HealthKitUtil.authorizeHealthKit { (authorized, error) in
@@ -57,17 +59,38 @@ struct ContentView: View {
               Text("Authorize HealthKit")
             }
             Spacer().frame(height: 20)
-            Button( action: { self.getAllergyInformation()}) {
-              Text("Get Allergy Information")
+            NavigationView {
+                List{
+                    ForEach(medicalTypes,  id: \.self) { medicalType in
+                        NavigationLink(
+                        destination: HealthInfoDetailView(medicalType: medicalType) ){
+                            HealthInfoRow(medicalType: medicalType)
+                        }
+                    }
+                }
+                    
             }
-            Spacer().frame(height: 20)
-            if self.retrievedFhirData {
-                Text("\(patientName) is allergic to \(allergy)")
-                    .foregroundColor(Color.green)
-            }
+            .navigationBarTitle(Text("Medical Options"))
         }
     }
 }
+
+// NavigationLink(
+//                           destination: LandmarkDetail(landmark: landmark)
+//                               .environmentObject(self.userData)
+//                       ) {
+//                           LandmarkRow(landmark: landmark)
+//                       }
+
+//            Button( action: { self.getAllergyInformation()}) {
+//              Text("Get Allergy Information")
+//            }
+//            Spacer().frame(height: 20)
+//            if self.retrievedFhirData {
+//                Text("\(patientName) is allergic to \(allergy)")
+//                    .foregroundColor(Color.green)
+//            }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
